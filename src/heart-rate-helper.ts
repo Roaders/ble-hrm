@@ -1,6 +1,6 @@
-import {  HeartRateResult } from './contracts';
+import { HeartRateResult } from './contracts';
 import { now } from './timer.helper';
-import { isDataView } from "ble-helper"
+import { isDataView } from 'ble-helper';
 
 export const HEART_RATE_SERVICE = 'heart_rate';
 export const HEART_RATE_CHARACTERISTIC = `heart_rate_measurement`;
@@ -52,4 +52,3 @@ export function parseHeartRate(value: DataView | ArrayBuffer): HeartRateResult {
 
     return { heartRate, timestamp, ...result };
 }
-

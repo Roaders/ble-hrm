@@ -1,4 +1,3 @@
-
 import { Injectable } from '@morgan-stanley/needle';
 import { BluetoothHelper } from 'ble-helper';
 import { from, merge, Observable, of } from 'rxjs';

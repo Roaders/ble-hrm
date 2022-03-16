@@ -1,18 +1,14 @@
 import { Component } from '@angular/core';
-import {HeartRateDevice} from "../../src"
+import { HeartRateDevice } from '../../src';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html'
+    selector: 'app-root',
+    templateUrl: './app.component.html',
 })
 export class AppComponent {
+    constructor(private hrDevice: HeartRateDevice) {}
 
-    constructor(private hrDevice: HeartRateDevice){
-
+    public connect() {
+        this.hrDevice.connect().subscribe((value) => console.log(value.heartRate));
     }
-
-    public connect(){
-        this.hrDevice.connect().subscribe(value => console.log(value.heartRate))
-    }
-
 }

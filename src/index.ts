@@ -1,4 +1,3 @@
-
-export * from "./heart-rate-helper";
-export * from "./heart-rate.device";
-export * from "./contracts";
+export * from './heart-rate-helper';
+export * from './heart-rate.device';
+export * from './contracts';

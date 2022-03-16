@@ -1,4 +1,4 @@
 
-export function helloWorld(): string{
-    return "Hello World from BLE";
-}
+export * from "./heart-rate-helper";
+export * from "./heart-rate.device";
+export * from "./contracts";

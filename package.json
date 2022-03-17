@@ -48,6 +48,7 @@
     "dependencies": {
         "@morgan-stanley/needle": "^0.3.13",
         "ble-helper": "file:../ble-helper/ble-helper-1.0.0.tgz",
+        "bootstrap": "^5.1.3",
         "reflect-metadata": "^0.1.13"
     }
 }

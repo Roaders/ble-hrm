@@ -2,9 +2,13 @@ import { HeartRateResult } from './contracts';
 import { now } from './timer.helper';
 import { isDataView } from 'ble-helper';
 
-export const HEART_RATE_SERVICE = 'heart_rate';
-export const HEART_RATE_CHARACTERISTIC = `heart_rate_measurement`;
+// https://btprodspecificationrefs.blob.core.windows.net/assigned-values/16-bit%20UUID%20Numbers%20Document.pdf
+export const HEART_RATE_SERVICE = 0x180d;
+export const HEART_RATE_CHARACTERISTIC = 0x2a37;
 
+// from https://www.bluetooth.com/specifications/specs/heart-rate-service-1-0/
+
+// Flag Bits
 export const rate16Bits = 0x1;
 export const contactDetected = 0x2;
 export const contactSensorPresent = 0x4;

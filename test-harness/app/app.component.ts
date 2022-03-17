@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HeartRateDevice } from '../../src';
+import { HeartRateDevice, HeartRateResult } from '../../src';
 
 @Component({
     selector: 'app-root',
@@ -8,7 +8,30 @@ import { HeartRateDevice } from '../../src';
 export class AppComponent {
     constructor(private hrDevice: HeartRateDevice) {}
 
+    private _updateCount = 0;
+
+    public get updateCount(): number {
+        return this._updateCount;
+    }
+
+    private _result: HeartRateResult | undefined;
+
+    public get result(): HeartRateResult | undefined {
+        return this._result;
+    }
+
+    private _connected = false;
+
+    public get connected(): boolean {
+        return this._connected;
+    }
+
     public connect() {
-        this.hrDevice.connect().subscribe((value) => console.log(value.heartRate));
+        this._connected = true;
+
+        this.hrDevice.connect().subscribe((value) => {
+            this._result = value;
+            this._updateCount++;
+        });
     }
 }

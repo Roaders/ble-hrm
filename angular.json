@@ -24,7 +24,11 @@
                         "index": "test-harness/index.html",
                         "main": "test-harness/main.ts",
                         "tsConfig": "test-harness/tsconfig.app.json",
-                        "scripts": []
+                        "scripts": [],
+                        "styles": [
+                            "node_modules/bootstrap/scss/bootstrap.scss",
+                            "test-harness/app/styles.scss"
+                        ]
                     },
                     "configurations": {
                         "development": {

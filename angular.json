@@ -23,7 +23,7 @@
                         "outputPath": "build",
                         "index": "test-harness/index.html",
                         "main": "test-harness/main.ts",
-                        "tsConfig": "test-harness/tsconfig.app.json",
+                        "tsConfig": "test-harness/tsconfig.json",
                         "scripts": [],
                         "styles": [
                             "node_modules/bootstrap/scss/bootstrap.scss",

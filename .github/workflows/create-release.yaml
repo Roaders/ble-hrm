@@ -16,13 +16,11 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node
-        if: steps.release.outputs.released == 'true'
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'
 
       - name: Install node modules and verify build
-        if: steps.release.outputs.released == 'true'
         run: npm ci && npm run verify-release
 
       - name: Release

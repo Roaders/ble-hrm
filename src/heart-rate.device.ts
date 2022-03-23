@@ -1,9 +1,10 @@
 import { Injectable } from '@morgan-stanley/needle';
 import { BluetoothHelper } from 'ble-helper';
 import { from, merge, Observable, of } from 'rxjs';
-import { filter, map, mergeMap, share, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { filter, map, mergeMap, share, switchMap, tap } from 'rxjs/operators';
 import { HeartRateResult } from './contracts';
 import { HEART_RATE_CHARACTERISTIC, HEART_RATE_SERVICE, parseHeartRate } from './heart-rate-helper';
+import { isDefined } from './type-guards';
 
 @Injectable()
 export class HeartRateDevice {
@@ -11,14 +12,8 @@ export class HeartRateDevice {
 
     public connect(connectionRetries = 5): Observable<HeartRateResult> {
         return this.helper.requestDevice([HEART_RATE_SERVICE]).pipe(
-            mergeMap((device) => {
-                const updatesStream = this.subscribeToUpdates(device, connectionRetries).pipe(share());
-
-                return merge(
-                    updatesStream,
-                    this.helper.createTimeOutStream<HeartRateResult>(60000).pipe(takeUntil(updatesStream)),
-                );
-            }),
+            filter(isDefined),
+            mergeMap((device) => this.subscribeToUpdates(device, connectionRetries).pipe(share())),
         );
     }
 

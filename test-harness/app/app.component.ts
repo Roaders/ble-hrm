@@ -8,12 +8,6 @@ import { HeartRateDevice, HeartRateResult } from '../../src';
 export class AppComponent {
     constructor(private hrDevice: HeartRateDevice) {}
 
-    private _updateCount = 0;
-
-    public get updateCount(): number {
-        return this._updateCount;
-    }
-
     private _result: HeartRateResult | undefined;
 
     public get result(): HeartRateResult | undefined {
@@ -29,9 +23,6 @@ export class AppComponent {
     public connect() {
         this._connected = true;
 
-        this.hrDevice.connect().subscribe((value) => {
-            this._result = value;
-            this._updateCount++;
-        });
+        this.hrDevice.connect().subscribe((value) => (this._result = value));
     }
 }
